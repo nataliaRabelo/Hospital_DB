@@ -22,7 +22,7 @@ sqlcmd -S myServernomeInstância -i C:myScript.sql
 
 # 5 Projeto Lógico
 
-As chaves primárias de cada tabela do bando de dados estão destacadas.
+As chaves primárias de cada tabela do banco de dados estão destacadas.
 
 * Usuario(`id`,  email, nome,  username, dataNascimento, CPF, RG, telefone, dataCadastro, cep, endereço, numero, complemento, bairro, municipio, estado, tipo)
 
