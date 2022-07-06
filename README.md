@@ -18,5 +18,5 @@ sqlcmd -S myServernomeInstância -i C:myScript.sql
 
 # 4 Modelo Entidade-Relacionamento deste projeto
 
-[MER](https://https://github.com/nataliaRabelo/Hospital_DB/Hospital_MER.jpg)
+![MER](https://github.com/nataliaRabelo/Hospital_DB/blob/main/Hospital_MER.jpg)
 
