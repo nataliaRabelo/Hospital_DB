@@ -15,9 +15,6 @@ Você pode executar através da IDE. Você também pode compilar e executar atra
 ```
 sqlcmd -S myServernomeInstância -i C:myScript.sql
 ```
-# 4 Estrutura deste repositório
-
-TODO:
 
 # 4 Modelo Entidade-Relacionamento deste projeto
 
@@ -25,44 +22,52 @@ TODO:
 
 # 5 Projeto Lógico
 
-usuario(<u>id</u>,  email, nome,  username, dataNascimento, CPF, RG, telefone, dataCadastro, cep, endereço, numero, complemento, bairro, municipio, estado, tipo)
+As chaves primárias de cada tabela do bando de dados estão destacadas.
 
-unidade(<u>id</u>, nome, CNPJ, telefone, dataCadastro, cep, endereço, numero, complemento, bairro, municipio, estado)
+* Usuario(`id`,  email, nome,  username, dataNascimento, CPF, RG, telefone, dataCadastro, cep, endereço, numero, complemento, bairro, municipio, estado, tipo)
+
+* Unidade(`id`, nome, CNPJ, telefone, dataCadastro, cep, endereço, numero, complemento, bairro, municipio, estado)
  
-Departamento(<u>cod</u>, codUnidade, nome)
-codUnidade referencia unidade
+* Departamento(`cod`, codUnidade, nome)
+    * codUnidade referencia unidade 
 
-responsável(<u>id</u>, pacienteId, parentesco)
-pacienteId referencia usuario
+* Responsável(`id`, pacienteId, parentesco)
+    * pacienteId referencia usuario
 
-paciente(<u>id</u>, internado, responsavelId)
-id referencia usuario
-responsavelId referencia responsavel
+* Paciente(`id`, internado, responsavelId)
+    * id referencia usuario
+    * responsavelId referencia responsavel
 
-medicamento(<u>id</u>, nome, dataCadastro, pacienteId)
-pacienteId referencia paciente
+* Medicamento(`id`, nome, dataCadastro, pacienteId)
+    * pacienteId referencia paciente
 
-agenda(<u>id</u>, dataInicio, dataFim, dataCadastro)
+* Agenda(`id`, dataInicio, dataFim, dataCadastro)
  
-configuracaoAgenda(<u>id</u>, agendaId, dataInicio,dataFim, horaInicio, horaFim, quantidadeVagas, dataCadastro, intervaloMinuto)
-agendaId referencia agenda
+* ConfiguracaoAgenda(`id`, agendaId, dataInicio,dataFim, horaInicio, horaFim, quantidadeVagas, dataCadastro, intervaloMinuto)
+    * agendaId referencia agenda
  
-tipoAgenda(<u>id</u>, agendaId, nome, dataCadastro)
-agendaId referencia agenda
+* TipoAgenda(`id`, agendaId, nome, dataCadastro)
+    * agendaId referencia agenda
 
-feriado(<u>id</u>, agendaId, data, descricao, dataCadastro)
-agendaId referencia agenda
+* Feriado(`id`, agendaId, data, descricao, dataCadastro)
+    * AgendaId referencia agenda
 
-agendamentoAtendimento(<u>id</u>, agendaId, pacienteid, datacadastro, observacao, statusatendimento, retirouMedicamento, dataAtendimento)
-pacienteId referencia paciente
-agendaId referencia agenda
+* AgendamentoAtendimento(`id`, agendaId, pacienteid, datacadastro, observacao, statusatendimento, retirouMedicamento, dataAtendimento)
+    * pacienteId referencia paciente
+    * agendaId referencia agenda
  
-diagnostico(<u>cod</u>, nome, idAtendimento, detalhes)
-idAtendimento referecia Agendamento_Atendimento
+* Diagnostico(`cod`, nome, idAtendimento, detalhes)
+    * idAtendimento referecia Agendamento_Atendimento
  
-medico(<u>id</u>, nome, CodDepartamento, RG, CPF, CRM, telefone)
-codDepartamento referencia Departamento
+* Medico(`id`, nome, CodDepartamento, RG, CPF, CRM, telefone)
+    * codDepartamento referencia Departamento
 
-medicoAtendimento(<u>idMedico</u>, idAtendimento)
-idMedico referencia medico
-idAtendimento referencia agendamentoAtendimento
+* MedicoAtendimento(`idMedico`, idAtendimento)
+    * idMedico referencia medico
+    * idAtendimento referencia agendamentoAtendimento
+
+# 6 Estrutura deste repositório
+
+* Hospital_DB/
+    * CREATE_SCRIPTS
+    * QUERIES
