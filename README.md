@@ -10,7 +10,7 @@ Data: 06/07/2022
 
 # 3 Instruções para execução
 
-Você pode executar através da IDE. Você também pode compilar e executar através do terminal cada script através do seguinte exemplo de comando:
+Você pode executar através do gerenciador de banco de dados. Você também pode compilar e executar através do terminal cada script através do seguinte exemplo de comando:
 
 ```
 sqlcmd -S myServernomeInstância -i C:myScript.sql
