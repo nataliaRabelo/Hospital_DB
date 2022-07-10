@@ -69,5 +69,5 @@ As chaves primárias de cada tabela do banco de dados estão destacadas.
 # 6 Estrutura deste repositório
 
 * Hospital_DB/
-    * CREATE_SCRIPTS.sql
-    * QUERIES.sql
+    * CREATE_SCRIPTS.sql - Scripts de criação de tabelas
+    * QUERIES.sql - Scripts de consulta de dados
