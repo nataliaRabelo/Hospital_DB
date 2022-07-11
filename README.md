@@ -31,43 +31,48 @@ As chaves primárias de cada tabela do banco de dados estão destacadas.
 * Departamento(`cod`, codUnidade, nome)
     * codUnidade referencia unidade 
 
-* Responsável(`id`, pacienteId, parentesco)
-    * pacienteId referencia usuario
+* Responsável(`id`, parentesco, nome)
 
-* Paciente(`id`, internado, responsavelId)
+* Paciente(`id`, nome, internado, responsavelId)
     * id referencia usuario
     * responsavelId referencia responsavel
 
-* Medicamento(`id`, nome, dataCadastro, pacienteId)
-    * pacienteId referencia paciente
+* Medicamento(`id`, nome, dataCadastro)
 
-* Agenda(`id`, dataInicio, dataFim, dataCadastro)
+* Agenda(`id`, dataInicio, dataFim, dataCadastro, configuracaoAgendaId)
+    * configuracaoAgendaId referencia agenda
  
-* ConfiguracaoAgenda(`id`, agendaId, dataInicio,dataFim, horaInicio, horaFim, quantidadeVagas, dataCadastro, intervaloMinuto)
-    * agendaId referencia agenda
+* ConfiguracaoAgenda(`id`, tipoAgendaId, dataInicio,dataFim, horaInicio, horaFim, quantidadeVagas, dataCadastro, intervaloMinuto, unidadeId)
+    * agendaId referencia tipoAgenda
+    * unidadeId referencia unidade
  
-* TipoAgenda(`id`, agendaId, nome, dataCadastro)
-    * agendaId referencia agenda
+* TipoAgenda(`id`, nome, dataCadastro)
 
 * Feriado(`id`, agendaId, data, descricao, dataCadastro)
     * AgendaId referencia agenda
 
-* AgendamentoAtendimento(`id`, agendaId, pacienteid, datacadastro, observacao, statusatendimento, retirouMedicamento, dataAtendimento)
+* AgendamentoAtendimento(`id`, agendaId, pacienteid, datacadastro, observacao, statusatendimento, retirouMedicamento)
     * pacienteId referencia paciente
     * agendaId referencia agenda
  
 * Diagnostico(`cod`, nome, idAtendimento, detalhes)
-    * idAtendimento referecia Agendamento_Atendimento
+    * idAtendimento referecia MedicoAtendimento
  
 * Medico(`id`, nome, CodDepartamento, RG, CPF, CRM, telefone)
     * codDepartamento referencia Departamento
 
-* MedicoAtendimento(`idMedico`, idAtendimento)
+* MedicoAtendimento(`id`, idMedico, idAtendimento, dataAtendimento)
     * idMedico referencia medico
     * idAtendimento referencia agendamentoAtendimento
+
+* PacienteMedicamento(`id`, pacienteid, medicamentoid, agendamentoid, datacadastro) 
+    * pacienteid referencia paciente   
+    * medicamentoid referencia medicamento
+    * agendamentoid referencia AgendamentoAtendimento
 
 # 6 Estrutura deste repositório
 
 * Hospital_DB/
     * CREATE_SCRIPTS.sql - Scripts de criação de tabelas
     * QUERIES.sql - Scripts de consulta de dados
+    * HOSPITAL_MER.jpg - Modelo Entidade-Relacionamento do banco de dados
